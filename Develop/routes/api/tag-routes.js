@@ -3,24 +3,20 @@ const { Tag, Product, ProductTag, Category } = require('../../models');
 
 // The `/api/tags` endpoint
 
-router.get('/', (req, res) => {
-  const userData =  Product.findAll({ include: [{ model: Category }, { model: Product }],
-    attributes: {
-      
-    }
-  }).catch((err) => {
-
-  // attributes: {
-    res.json(err);
-  });
-  res.json(userData);
-  // find all tags
-  // be sure to include its associated Product data
+router.get('/', async (req, res) => {
+  try {
+  const tagData = await Tag.findAll( {
+    include: [],
+  })
+    .then(tagData => res.json(tagData))
+  } catch(err) {
+      res.status(500).json(err);
+    };
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
-    const userData =  Tag.findByPk(req.params.id);
+    const userData =  await Tag.findByPk(req.params.id);
     if (!userData) {
       res.status(404).json({ message: 'No user with this id!' });
       return;
