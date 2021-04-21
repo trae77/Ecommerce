@@ -42,11 +42,10 @@
   Find me on Github or reach out via email
  
  
- <a href="https://drive.google.com/file/d/15wkTbZxnTBol8nyt7rm0XSnRbSygXGYF/view?usp=sharing" target="_blank">heres a walkthrough of my insomnia showing the routes function</a>
  
 
 You can find me on GitHub at [trae77](https://github.com/trae77)
 
   Email me if you run into any questions at soccerreferee7@gmail.com
 
-heres a walkthrough of my insomnia showing the routes function
+
