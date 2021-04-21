@@ -47,29 +47,33 @@ router.post('/', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-  Category.update(req.body, {
-    where: {
+ 
+  Category.update({
+    category_name : req.body.category_name
+  },
+   { 
+     where: {
       id: req.params.id,
     },
   })
     .then((Category) => {
-      // find all associated tags from ProductTag
-      return Category.findAll({ where: { product_id: req.params.id } });
+   
+      res.json(Category);
     })
   // update a category by its `id` value
 });
 
 router.delete('/:id', (req, res) => {
   // delete a category by its `id` value
-  Category.delete(req.body, {
+  Category.destroy({
     where: {
       id: req.params.id,
     },
   })
-    .then((Category) => {
-      // find all associated tags from ProductTag
-      return Category.findAll({ where: { product_id: req.params.id } });
-    })
+  .then((deletedCategory) => {
+    res.json(deletedCategory);
+  })
+  .catch((err) => res.json(err));
 });
 
 module.exports = router;

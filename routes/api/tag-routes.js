@@ -53,19 +53,14 @@ router.put('/:id', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-  Tag.delete(req.body, {
+  Tag.destroy({
     where: {
       id: req.params.id,
     },
   })
-    .then((Tag) => {
-
-      return Tag.findAll({ where: { product_id: req.params.id } });
-    })
-  // updat
-  // userData.destroy
-
-  // delete on tag by its `id` value
+  .then((deletedTag) => {
+    res.json(deletedTag);
+  })
+  .catch((err) => res.json(err));
 });
-
 module.exports = router;
